@@ -11,11 +11,6 @@ import java.util.List;
 public class PatientHistoryService {
     PatientHistoryProxy proxy;
 
-    @Autowired
-    private PatientHistoryService(PatientHistoryProxy patientHistoryProxy) {
-        proxy = patientHistoryProxy;
-    }
-
     public List<PatientsHistory> getAllPatientsHistories() {
         return proxy.getAllPatientsHistories();
 

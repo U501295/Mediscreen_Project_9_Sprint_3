@@ -12,11 +12,6 @@ public class PatientService {
 
     PatientProxy proxy;
 
-    @Autowired
-    public PatientService(PatientProxy patientProxy) {
-        proxy = patientProxy;
-    }
-
     public List<Patient> getAllPatients() {
         return proxy.getAllPatients();
     }

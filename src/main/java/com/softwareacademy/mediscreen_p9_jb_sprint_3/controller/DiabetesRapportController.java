@@ -42,7 +42,7 @@ public class DiabetesRapportController {
         PatientsHistory patientsHistory = patientHistoryService.getPatientsHistoryByName(firstName, lastName);
         Patient patient = patientService.getPatientByName(firstName, lastName);
         int age = AgeCalculator.calculateAge(patient.getBirthdate());
-        String diabetesRapport = diabetesRapportService.diabetesRapport(age, riskFactorsService.getRiskFactorsCount(patientsHistory.getNotes()), patient.getSex());
+        String diabetesRapport = diabetesRapportService.diabetesRapport(age, riskFactorsService.getRiskFactorsCount(patientsHistory.getNotes()), patient.getGender());
 
         return new Assess(firstName, lastName, age, diabetesRapport);
     }
@@ -54,7 +54,7 @@ public class DiabetesRapportController {
         String lastName = patientsHistory.getLastName();
         Patient patient = patientService.getPatientByName(firstName, lastName);
         int age = AgeCalculator.calculateAge(patient.getBirthdate());
-        String diabetesRapport = diabetesRapportService.diabetesRapport(age, riskFactorsService.getRiskFactorsCount(patientsHistory.getNotes()), patient.getSex());
+        String diabetesRapport = diabetesRapportService.diabetesRapport(age, riskFactorsService.getRiskFactorsCount(patientsHistory.getNotes()), patient.getGender());
 
         return new Assess(firstName, lastName, age, diabetesRapport);
     }
