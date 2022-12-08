@@ -1,7 +1,10 @@
 package com.softwareacademy.mediscreen_p9_jb_sprint_3.service;
 
 import com.softwareacademy.mediscreen_p9_jb_sprint_3.constants.Constants;
+import com.softwareacademy.mediscreen_p9_jb_sprint_3.proxy.Notes;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class RiskFactorsService {

@@ -25,10 +25,9 @@ public class Patient {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate birthdate;
 
-    private String sex;
+    private String gender;
     private String phone;
     private String address;
-    private String city;
 
     //Setter for curl request
 
