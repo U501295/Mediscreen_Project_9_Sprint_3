@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
     @Service
     public class DiabetesRapportService {
 
-        public String diabetesRapport(int age, int riskFactorsCount, String sex) {
+        public String diabetesRapport(int age, int riskFactorsCount, String gender) {
             String rapport = null;
 
             switch (riskFactorsCount) {
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
                     }
                     break;
                 case 3:
-                    if ((age < Constants.LIMIT) && (sex.equals("M"))) {
+                    if ((age < Constants.LIMIT) && (gender.equals("M"))) {
                         rapport = Constants.DANGER;
                     } else if (age < Constants.LIMIT) {
                         rapport = Constants.NONE;
@@ -38,7 +38,7 @@ import org.springframework.stereotype.Service;
                     }
                     break;
                 case 5:
-                    if ((age < Constants.LIMIT) && (sex.equals("M"))) {
+                    if ((age < Constants.LIMIT) && (gender.equals("M"))) {
                         rapport = Constants.EARLY;
                     } else if (age < Constants.LIMIT) {
                         rapport = Constants.DANGER;
@@ -47,7 +47,7 @@ import org.springframework.stereotype.Service;
                     }
                     break;
                 case 6:
-                    if (age < Constants.LIMIT && (sex.equals("M"))) {
+                    if (age < Constants.LIMIT && (gender.equals("M"))) {
                         rapport = Constants.EARLY;
                     } else {
                         rapport = Constants.DANGER;

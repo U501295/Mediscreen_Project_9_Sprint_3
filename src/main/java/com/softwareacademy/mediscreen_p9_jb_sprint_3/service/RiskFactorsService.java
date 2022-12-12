@@ -12,7 +12,7 @@ public class RiskFactorsService {
     public int getRiskFactorsCount(List<Notes> patientNotes) {
         int count = 0;
         for(Notes note : patientNotes) {
-            String text = note.getNote().toLowerCase();
+            String text = note.getContent().toLowerCase();
             count += Constants.riskFactors.stream().filter(riskFactors -> text.contains(riskFactors.toLowerCase())).count();
         }
 

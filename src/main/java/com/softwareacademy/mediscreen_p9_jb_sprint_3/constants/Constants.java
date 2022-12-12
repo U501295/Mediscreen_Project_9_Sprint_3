@@ -10,6 +10,5 @@ public class Constants {
     public static final String BORDERLINE = "Borderline";
     public static final String DANGER = "In Danger";
     public static final String EARLY = "Early onset";
-
     public static final int LIMIT = 30;
 }

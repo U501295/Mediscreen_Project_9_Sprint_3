@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PatientsHistory {
+public class PatientHistory {
 
     private Long patientId;
     private String firstName;

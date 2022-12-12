@@ -2,7 +2,7 @@ package com.softwareacademy.mediscreen_p9_jb_sprint_3.controller;
 
 import com.softwareacademy.mediscreen_p9_jb_sprint_3.proxy.Assess;
 import com.softwareacademy.mediscreen_p9_jb_sprint_3.proxy.Patient;
-import com.softwareacademy.mediscreen_p9_jb_sprint_3.proxy.PatientsHistory;
+import com.softwareacademy.mediscreen_p9_jb_sprint_3.proxy.PatientHistory;
 import com.softwareacademy.mediscreen_p9_jb_sprint_3.service.DiabetesRapportService;
 import com.softwareacademy.mediscreen_p9_jb_sprint_3.service.PatientHistoryService;
 import com.softwareacademy.mediscreen_p9_jb_sprint_3.service.PatientService;
@@ -39,22 +39,22 @@ public class DiabetesRapportController {
 
     @GetMapping("/assess")
     public Assess getPatientAssess(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
-        PatientsHistory patientsHistory = patientHistoryService.getPatientsHistoryByName(firstName, lastName);
+        PatientHistory patientHistory = patientHistoryService.getPatientsHistoryByName(firstName, lastName);
         Patient patient = patientService.getPatientByName(firstName, lastName);
         int age = AgeCalculator.calculateAge(patient.getBirthdate());
-        String diabetesRapport = diabetesRapportService.diabetesRapport(age, riskFactorsService.getRiskFactorsCount(patientsHistory.getNotes()), patient.getGender());
+        String diabetesRapport = diabetesRapportService.diabetesRapport(age, riskFactorsService.getRiskFactorsCount(patientHistory.getNotes()), patient.getGender());
 
         return new Assess(firstName, lastName, age, diabetesRapport);
     }
 
     @GetMapping("/assess/{id}")
     public Assess getPatientAssess(@PathVariable("id") Long id) {
-        PatientsHistory patientsHistory = patientHistoryService.getPatientsHistoryById(id);
-        String firstName = patientsHistory.getFirstName();
-        String lastName = patientsHistory.getLastName();
+        PatientHistory patientHistory = patientHistoryService.getPatientsHistoryById(id);
+        String firstName = patientHistory.getFirstName();
+        String lastName = patientHistory.getLastName();
         Patient patient = patientService.getPatientByName(firstName, lastName);
         int age = AgeCalculator.calculateAge(patient.getBirthdate());
-        String diabetesRapport = diabetesRapportService.diabetesRapport(age, riskFactorsService.getRiskFactorsCount(patientsHistory.getNotes()), patient.getGender());
+        String diabetesRapport = diabetesRapportService.diabetesRapport(age, riskFactorsService.getRiskFactorsCount(patientHistory.getNotes()), patient.getGender());
 
         return new Assess(firstName, lastName, age, diabetesRapport);
     }
