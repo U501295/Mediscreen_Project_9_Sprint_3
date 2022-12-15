@@ -23,7 +23,7 @@ public class PatientHistoryService {
         return proxy.getPatientHistoryByName(firstName, lastName);
     }
 
-    public PatientHistory getPatientsHistoryById(Long id) {
+    public PatientHistory getPatientHistoryById(Long id) {
         return proxy.getPatientHistoryById(id);
     }
 }

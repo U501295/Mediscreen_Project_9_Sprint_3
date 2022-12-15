@@ -10,20 +10,20 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 
 
-//@FeignClient(value = "mediscreen-sprint-2", url = "http://localhost:8082")
+@FeignClient(value = "mediscreen-sprint-2", url = "http://localhost:8082")
 public interface PatientHistoryProxy {
 
-    @RequestLine("GET /allPatientsHistory")
+    @GetMapping("/allPatientsHistory")
     //@RequestMapping(method = RequestMethod.GET, value = "/allPatientsHistory")
     List<PatientHistory> getAllPatientsHistories();
 
-    @RequestLine("GET /patientHistory?firstName={firstName}&lastName={lastName}")
-    @Headers("Content-Type: application/json")
-    @RequestMapping(method = RequestMethod.GET, value = "/patientHistory?firstName={firstName}&lastName={lastName}")
-    PatientHistory getPatientHistoryByName(@Param("firstName") String firstName, @Param("lastName") String lastName);
+    @GetMapping("/patientHistory?firstName={firstName}&lastName={lastName}")
+    //@Headers("Content-Type: application/json")
+    //@RequestMapping(method = RequestMethod.GET, value = "/patientHistory?firstName={firstName}&lastName={lastName}")
+    PatientHistory getPatientHistoryByName(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName);
 
-    @RequestLine("GET /patientHistory/{id}")
-    @Headers("Content-Type: application/json")
+    @GetMapping("/patientHistory/{id}")
+    //@Headers("Content-Type: application/json")
     //@RequestMapping(method = RequestMethod.GET, value = "/patientHistory/{id}")
-    PatientHistory getPatientHistoryById(@Param("id") Long id);
+    PatientHistory getPatientHistoryById(@PathVariable Long id);
 }

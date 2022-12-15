@@ -43,13 +43,12 @@ public class DiabetesRapportController {
         Patient patient = patientService.getPatientByName(firstName, lastName);
         int age = AgeCalculator.calculateAge(patient.getBirthdate());
         String diabetesRapport = diabetesRapportService.diabetesRapport(age, riskFactorsService.getRiskFactorsCount(patientHistory.getNotes()), patient.getGender());
-
         return new Assess(firstName, lastName, age, diabetesRapport);
     }
 
     @GetMapping("/assess/{id}")
     public Assess getPatientAssess(@PathVariable("id") Long id) {
-        PatientHistory patientHistory = patientHistoryService.getPatientsHistoryById(id);
+        PatientHistory patientHistory = patientHistoryService.getPatientHistoryById(id);
         String firstName = patientHistory.getFirstName();
         String lastName = patientHistory.getLastName();
         Patient patient = patientService.getPatientByName(firstName, lastName);

@@ -16,7 +16,7 @@ import lombok.ToString;
 @ToString
 public class Notes {
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-dd-MM")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate creationDate;
     private String content;
