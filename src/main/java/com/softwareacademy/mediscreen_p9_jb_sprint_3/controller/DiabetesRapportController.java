@@ -38,25 +38,22 @@ public class DiabetesRapportController {
     }
 
     @GetMapping("/assess")
-    public Assess getPatientAssess(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
-        PatientHistory patientHistory = patientHistoryService.getPatientsHistoryByName(firstName, lastName);
-        Patient patient = patientService.getPatientByName(firstName, lastName);
+    public Assess getPatientAssess(@RequestParam("id") Long id) {
+        PatientHistory patientHistory = patientHistoryService.getPatientsHistoryById(id);
+        Patient patient = patientService.getPatientById(id);
         int age = AgeCalculator.calculateAge(patient.getBirthdate());
         String diabetesRapport = diabetesRapportService.diabetesRapport(age, riskFactorsService.getRiskFactorsCount(patientHistory.getNotes()), patient.getGender());
 
-        return new Assess(firstName, lastName, age, diabetesRapport);
+        return new Assess(id, age, diabetesRapport);
     }
 
     @GetMapping("/assess/{id}")
-    public Assess getPatientAssess(@PathVariable("id") Long id) {
+    public Assess getPatientAssessById(@PathVariable("id") Long id) {
+        Patient patient = patientService.getPatientById(id);
         PatientHistory patientHistory = patientHistoryService.getPatientsHistoryById(id);
-        String firstName = patientHistory.getFirstName();
-        String lastName = patientHistory.getLastName();
-        Patient patient = patientService.getPatientByName(firstName, lastName);
         int age = AgeCalculator.calculateAge(patient.getBirthdate());
         String diabetesRapport = diabetesRapportService.diabetesRapport(age, riskFactorsService.getRiskFactorsCount(patientHistory.getNotes()), patient.getGender());
-
-        return new Assess(firstName, lastName, age, diabetesRapport);
+        return new Assess(id, age, diabetesRapport);
     }
 
 }

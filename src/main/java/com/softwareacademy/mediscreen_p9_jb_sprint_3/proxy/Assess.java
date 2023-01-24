@@ -9,8 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Assess {
 
-    private String firstName;
-    private String lastName;
+    private Long id;
     private int age;
     private String diabetesAssessment;
 

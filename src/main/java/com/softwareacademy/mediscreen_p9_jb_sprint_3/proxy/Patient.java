@@ -18,13 +18,13 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Patient {
 
-    private long id;
+    private Long id;
     private String firstName;
     private String lastName;
 
 
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-dd-MM")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate birthdate;
     private String gender;
     private String phone;

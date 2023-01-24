@@ -17,7 +17,7 @@ public class PatientService {
         return proxy.getAllPatients();
     }
 
-    public Patient getPatientByName(String firstName, String lastName) {
-        return proxy.getPatientByName(firstName, lastName);
+    public Patient getPatientById(Long id) {
+        return proxy.getPatientById(id);
     }
 }
