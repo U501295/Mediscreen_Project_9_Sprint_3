@@ -65,7 +65,7 @@ import org.springframework.stereotype.Service;
                 case 10:
                 case 11:
                     rapport = Constants.EARLY;
-
+                    break;
                 default:
                     break;
             }

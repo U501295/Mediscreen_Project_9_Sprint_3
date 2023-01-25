@@ -19,10 +19,6 @@ public class PatientHistoryService {
 
     }
 
-    public PatientHistory getPatientsHistoryByName(String firstName, String lastName) {
-        return proxy.getPatientHistoryByName(firstName, lastName);
-    }
-
     public PatientHistory getPatientsHistoryById(Long id) {
         return proxy.getPatientHistoryById(id);
     }

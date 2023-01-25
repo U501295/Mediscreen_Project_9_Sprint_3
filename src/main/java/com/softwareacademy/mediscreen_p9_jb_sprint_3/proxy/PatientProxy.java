@@ -11,9 +11,9 @@ import org.springframework.cloud.openfeign.FeignClient;
 //@FeignClient(name = "mediscreen-sprint-1", url = "localhost:8081")
 public interface PatientProxy {
 
-    @RequestLine("GET /patient?firstName={firstName}&lastName={lastName}")
-    @Headers("Content-Type: application/json")
-    Patient getPatientByName(@Param("firstName") String firstName, @Param("lastName") String lastName);
+    @RequestLine("GET /patient/{id}")
+    //@Headers("Content-Type: application/json")
+    Patient getPatientById(@Param("id") Long id);
 
     @RequestLine("GET /patients")
     List<Patient> getAllPatients();
