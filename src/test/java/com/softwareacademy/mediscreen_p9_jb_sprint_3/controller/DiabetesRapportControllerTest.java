@@ -81,7 +81,7 @@ class DiabetesRapportControllerTest {
         when(patientHistoryService.getPatientsHistoryById(Mockito.anyLong())).thenReturn(patientsHistory);
         when(patientService.getPatientById(Mockito.anyLong())).thenReturn(patient);
         when(diabetesRapportService.diabetesRapport(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyString())).thenReturn(diabetesRapport);
-        mockMvc.perform(get("/assess").param("id", "0")).andExpect(status().isOk());
+        mockMvc.perform(get("/assess").param("id", "0L")).andExpect(status().isOk());
     }
 
     @Test
